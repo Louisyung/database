@@ -8,7 +8,7 @@ user_setting = {
     "user": "411177009",
     "password": "411177009",
     "host": "0.tcp.jp.ngrok.io",
-    "port": 11051,
+    "port": 12592,
     "database": "411177009"
 }
 
@@ -20,6 +20,10 @@ def execute_query():
             messagebox.showerror("Error", "Only SELECT queries are allowed.")
             return
         
+        # Ensure connection and cursor are available
+        connection = mariadb.connect(**user_setting)
+        cursor = connection.cursor()
+
         cursor.execute(query)
         rows = cursor.fetchall()
         
@@ -37,7 +41,10 @@ def execute_query():
         # Display query results
         for row in rows:
             tree.insert("", "end", values=row)
-    
+        
+        cursor.close()
+        connection.close()
+
     except mariadb.Error as e:
         messagebox.showerror("Error", f"Error executing query: {e}")
 
