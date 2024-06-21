@@ -1,4 +1,6 @@
-
+# Member
+軟體二 411177033 洪唯仁
+軟體二 411177009 楊育丞
 # Database Query Interface
 
 This project is a GUI-based application for querying a database. It uses MariaDB for the database and Tkinter for the graphical user interface. The application allows users to execute SELECT queries and view the results in a table format.
